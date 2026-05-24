@@ -24,7 +24,7 @@ function App() {
 
     try {
       const response = await axios.post(
-        "https://chatbot-backend.onrender.com/chat",
+        "https://chatbot-backend-47u7.onrender.com/chat",
         {
           message: currentMessage,
         }
