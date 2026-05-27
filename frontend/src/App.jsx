@@ -1,112 +1,34 @@
-import { useState } from "react";
-import axios from "axios";
-import "./App.css";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+import Login from "./pages/Login";
+import Signup from "./pages/Signup";
+import Chat from "./pages/Chat";
 
 function App() {
-  const [message, setMessage] = useState("");
-  const [chat, setChat] = useState([]);
-  const [loading, setLoading] = useState(false);
-
-  const sendMessage = async () => {
-    if (!message.trim()) return;
-
-    const userMessage = {
-      sender: "user",
-      text: message,
-    };
-
-    setChat((prev) => [...prev, userMessage]);
-
-    const currentMessage = message;
-
-    setMessage("");
-    setLoading(true);
-
-    try {
-      const response = await axios.post(
-        "https://chatbot-backend-47u7.onrender.com/chat",
-        {
-          message: currentMessage,
-        }
-      );
-
-      const botMessage = {
-        sender: "bot",
-        text: response.data.reply,
-      };
-
-      setChat((prev) => [...prev, botMessage]);
-
-    } catch (error) {
-
-      console.error(error);
-
-      setChat((prev) => [
-        ...prev,
-        {
-          sender: "bot",
-          text: "Error connecting to backend.",
-        },
-      ]);
-
-    } finally {
-
-      setLoading(false);
-
-    }
-  };
 
   return (
-    <div className="app">
-      <div className="chat-container">
+    <BrowserRouter>
 
-        <h1>AI Chatbot</h1>
+      <Routes>
 
-        <div className="chat-box">
+        <Route
+          path="/"
+          element={<Login />}
+        />
 
-          {chat.map((msg, index) => (
-            <div
-              key={index}
-              className={
-                msg.sender === "user"
-                  ? "message user"
-                  : "message bot"
-              }
-            >
-              {msg.text}
-            </div>
-          ))}
+        <Route
+          path="/signup"
+          element={<Signup />}
+        />
 
-          {loading && (
-            <div className="message bot">
-              Typing...
-            </div>
-          )}
+        <Route
+          path="/chat"
+          element={<Chat />}
+        />
 
-        </div>
+      </Routes>
 
-        <div className="input-area">
-
-          <input
-            type="text"
-            placeholder="Ask something..."
-            value={message}
-            onChange={(e) => setMessage(e.target.value)}
-            onKeyDown={(e) => {
-              if (e.key === "Enter") {
-                sendMessage();
-              }
-            }}
-          />
-
-          <button onClick={sendMessage}>
-            Send
-          </button>
-
-        </div>
-
-      </div>
-    </div>
+    </BrowserRouter>
   );
 }
 
