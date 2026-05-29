@@ -84,7 +84,7 @@ function Chat() {
             justifyContent: "space-between",
             alignItems: "center",
             padding: "20px",
-            background: "#1e293b",
+            background: "rgb(133 178 250)",
             color: "white",
           }}
         >
