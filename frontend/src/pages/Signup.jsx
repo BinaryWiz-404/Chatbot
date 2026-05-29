@@ -1,7 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
-
 function Signup() {
 
   const [username, setUsername] = useState("");
@@ -25,7 +24,7 @@ function Signup() {
 
       alert("Signup successful");
 
-      navigate("/");
+      navigate("/chat");
 
     } catch (error) {
 
@@ -37,11 +36,13 @@ function Signup() {
   };
 
   return (
+  
+
     <div className="auth-container">
 
       <div className="auth-box">
 
-        <h1>Signup</h1>
+        <h2>Signup</h2>
 
         <input
           type="text"
@@ -76,6 +77,7 @@ function Signup() {
       </div>
 
     </div>
+   
   );
 }
 

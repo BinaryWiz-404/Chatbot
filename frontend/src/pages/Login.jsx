@@ -1,7 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
-
 function Login() {
 
   const [email, setEmail] = useState("");
@@ -34,12 +33,14 @@ function Login() {
 }
   };
 
-  return (
+return (
+
+
     <div className="auth-container">
 
       <div className="auth-box">
 
-        <h1>Login</h1>
+        <h2>Login</h2>
 
         <input
           type="email"
@@ -67,7 +68,8 @@ function Login() {
       </div>
 
     </div>
-  );
+
+);
 }
 
 export default Login;
