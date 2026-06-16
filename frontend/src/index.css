@@ -17,14 +17,12 @@ body {
 
   background-color: #0f172a;
 
-  background-image: url("https://plus.unsplash.com/premium_photo-1683910767532-3a25b821f7ae?q=80&w=808&auto=format&fit=crop");
+  background-image: url("C:\Users\sumee\OneDrive\Pictures\major project result\chatbot-project\frontend\src\assets\forest.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed;
 
   min-height: 100vh;
-
-  color: white;
 }
 
 /* =========================
@@ -40,7 +38,6 @@ body {
    HEADINGS
 ========================= */
 
-h1,
 h2,
 h3,
 h4,
@@ -84,7 +81,6 @@ textarea {
 ========================= */
 
 @media (max-width: 768px) {
-
   h1 {
     font-size: 32px;
   }
@@ -92,5 +88,4 @@ textarea {
   h2 {
     font-size: 24px;
   }
-
 }

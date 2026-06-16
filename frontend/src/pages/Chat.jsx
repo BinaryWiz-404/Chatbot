@@ -1,6 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
-import Navbar from "../components/Navbar";
+// import Navbar from "../components/Navbar";
 
 function Chat() {
 
@@ -72,7 +72,7 @@ function Chat() {
 
   return (
     <div>
-      <Navbar />
+      {/* <Navbar /> */}
   
     <div className="app">
 

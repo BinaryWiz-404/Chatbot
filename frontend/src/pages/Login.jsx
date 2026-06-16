@@ -1,75 +1,62 @@
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
+import "./Auth.css";
 function Login() {
-
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const navigate = useNavigate();
 
   const handleLogin = async () => {
-
     try {
-
       const response = await axios.post(
         "https://chatbot-backend-47u7.onrender.com/login",
         {
           email,
           password,
-        }
+        },
       );
 
-      localStorage.setItem(
-        "username",
-        response.data.username
-      );
+      localStorage.setItem("username", response.data.username);
 
       navigate("/chat");
-
     } catch (error) {
-  console.error(error);
-  alert("Invalid email or password");
-}
+      console.error(error);
+      alert("Invalid email or password");
+    }
   };
 
-return (
+  return (
+    <>
+      <div className="auth-container">
+        <div className="auth-box">
+          <h2>Login</h2>
 
+          <input
+            type="email"
+            placeholder="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
 
-    <div className="auth-container">
+          <input
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
 
-      <div className="auth-box">
+          <button onClick={handleLogin}>Login</button>
 
-        <h2>Login</h2>
-
-        <input
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-
-        <input
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-
-        <button onClick={handleLogin}>
-          Login
-        </button>
-
-        <p>
-          Don't have an account?
-          <Link to="/signup"> Signup</Link>
-        </p>
-
+          <p>
+            Don't have an account?
+            <Link to="/signup"> Signup</Link>
+          </p>
+        </div>
       </div>
-
-    </div>
-
-);
+    </>
+  );
 }
 
 export default Login;

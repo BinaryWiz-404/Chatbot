@@ -1,0 +1,35 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 27px;
+  background: transparent;
+  color: white;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  cursor: pointer;
+  z-index: 1000;
+}
+.nav-links {
+  display: flex;
+  gap: 20px;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: underline;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+}
+.nav-links a:hover {
+  color: #e28a37;
+}
+
+.nav-auth {
+  border: 2px solid rgb(148, 139, 139);
+  padding: 5px 10px;
+  border-radius: 13px;
+}

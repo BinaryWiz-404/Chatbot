@@ -1,0 +1,37 @@
+.home-container {
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
+  padding: 20px;
+}
+
+.home-container h1 {
+  font-size: 60px;
+  margin-bottom: 20px;
+  color: black;
+}
+
+.home-para {
+  position: relative;
+
+  width: 80%;
+  padding: 40px;
+
+  border-radius: 20px;
+
+  background: rgba(255, 255, 255, 0.18);
+
+  backdrop-filter: blur(10px);
+
+  border: 1px solid rgba(255, 255, 255, 0.25);
+
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+
+  z-index: 2;
+  font-size: 30px;
+  color: black;
+}
