@@ -8,16 +8,10 @@
   box-sizing: border-box;
 }
 
-/* =========================
-   BODY
-========================= */
-
 body {
   font-family: Arial, sans-serif;
 
-  background-color: #0f172a;
-
-  background-image: url("C:\Users\sumee\OneDrive\Pictures\major project result\chatbot-project\frontend\src\assets\forest.jpg");
+  background-image: url("../public/forest.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -25,60 +19,16 @@ body {
   min-height: 100vh;
 }
 
-/* =========================
-   ROOT
-========================= */
-
 #root {
   min-height: 100vh;
   width: 100%;
 }
-
-/* =========================
-   HEADINGS
-========================= */
-
-h2,
-h3,
-h4,
-h5,
-h6 {
-  color: white;
-  font-weight: bold;
-}
-
-/* =========================
-   LINKS
-========================= */
-
-a {
-  text-decoration: none;
-  color: inherit;
-}
-
-/* =========================
-   BUTTONS
-========================= */
-
-button {
-  cursor: pointer;
-  border: none;
-  outline: none;
-}
-
-/* =========================
-   INPUTS
-========================= */
 
 input,
 textarea {
   outline: none;
   border: none;
 }
-
-/* =========================
-   RESPONSIVE TEXT
-========================= */
 
 @media (max-width: 768px) {
   h1 {
