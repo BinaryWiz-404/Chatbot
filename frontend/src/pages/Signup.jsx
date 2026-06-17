@@ -2,6 +2,7 @@ import { useState } from "react";
 import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
 import "./Auth.css";
+import Navbar from "../components/Navbar";
 function Signup() {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
@@ -28,39 +29,42 @@ function Signup() {
   };
 
   return (
-    <div className="auth-container">
-      <div className="auth-box">
-        <h2>Signup</h2>
+    <>
+      <Navbar />
+      <div className="auth-container">
+        <div className="auth-box">
+          <h2>Signup</h2>
 
-        <input
-          type="text"
-          placeholder="Username"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-        />
+          <input
+            type="text"
+            placeholder="Username"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+          />
 
-        <input
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
+          <input
+            type="email"
+            placeholder="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
 
-        <input
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
+          <input
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
 
-        <button onClick={handleSignup}>Signup</button>
+          <button onClick={handleSignup}>Signup</button>
 
-        <p>
-          Already have an account?
-          <Link to="/login"> Login</Link>
-        </p>
+          <p>
+            Already have an account?
+            <Link to="/login"> Login</Link>
+          </p>
+        </div>
       </div>
-    </div>
+    </>
   );
 }
 

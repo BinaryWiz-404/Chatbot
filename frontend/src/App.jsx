@@ -3,42 +3,21 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Chat from "./pages/Chat";
-import "./App.css";
 function App() {
-
   return (
     <BrowserRouter>
-
       <Routes>
+        <Route path="/home" element={<Home />} />
 
-        <Route
-          path="/home"
-          element={<Home />}
-        />
+        <Route path="/" element={<Home />} />
 
-         <Route
-          path="/"
-          element={<Home />}
-        />
+        <Route path="/login" element={<Login />} />
 
-        <Route
-          path="/login"
-          element={<Login />}
-        />
+        <Route path="/signup" element={<Signup />} />
 
-        <Route
-          path="/signup"
-          element={<Signup />}
-        />
-
-        <Route
-          path="/chat"
-          element={<Chat />}
-        />
+        <Route path="/chat" element={<Chat />} />
       </Routes>
-
     </BrowserRouter>
-    
   );
 }
 

@@ -1,9 +1,9 @@
 import { useState } from "react";
 import axios from "axios";
 // import Navbar from "../components/Navbar";
+import "./Chat.css";
 
 function Chat() {
-
   const [message, setMessage] = useState("");
   const [chat, setChat] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -11,7 +11,6 @@ function Chat() {
   const username = localStorage.getItem("username");
 
   const sendMessage = async () => {
-
     if (!message.trim()) return;
 
     const userMessage = {
@@ -28,12 +27,11 @@ function Chat() {
     setLoading(true);
 
     try {
-
       const response = await axios.post(
         "https://chatbot-backend-47u7.onrender.com/chat",
         {
           message: currentMessage,
-        }
+        },
       );
 
       const botMessage = {
@@ -42,9 +40,7 @@ function Chat() {
       };
 
       setChat((prev) => [...prev, botMessage]);
-
     } catch (error) {
-
       console.error(error);
 
       setChat((prev) => [
@@ -54,118 +50,84 @@ function Chat() {
           text: "Error connecting to backend.",
         },
       ]);
-
     } finally {
-
       setLoading(false);
-
     }
   };
 
   const logout = () => {
-
     localStorage.removeItem("username");
 
     window.location.href = "/";
-
   };
 
   return (
     <div>
       {/* <Navbar /> */}
-  
-    <div className="app">
 
-      <div className="chat-container">
-
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-            padding: "20px",
-            background: "rgb(133 178 250)",
-            color: "white",
-          }}
-        >
-
-          <h2>
-            Welcome, {username}
-          </h2>
-
-          <button
-            onClick={logout}
+      <div className="app">
+        <div className="chat-container">
+          <div
             style={{
-              width: "100px",
-              padding: "10px",
-              background: "red",
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
+              padding: "20px",
+              background: "rgb(133 178 250)",
               color: "white",
-              border: "none",
-              borderRadius: "8px",
-              cursor: "pointer",
             }}
           >
-            Logout
-          </button>
+            <h2>Welcome, {username}</h2>
 
-        </div>
-
-        <div className="chat-box">
-
-          {chat.map((msg, index) => (
-
-            <div
-              key={index}
-              className={
-                msg.sender === "user"
-                  ? "message user"
-                  : "message bot"
-              }
+            <button
+              onClick={logout}
+              style={{
+                width: "100px",
+                padding: "10px",
+                background: "red",
+                color: "white",
+                border: "none",
+                borderRadius: "8px",
+                cursor: "pointer",
+              }}
             >
-              {msg.text}
-            </div>
+              Logout
+            </button>
+          </div>
 
-          ))}
+          <div className="chat-box">
+            {chat.map((msg, index) => (
+              <div
+                key={index}
+                className={
+                  msg.sender === "user" ? "message user" : "message bot"
+                }
+              >
+                {msg.text}
+              </div>
+            ))}
 
-          {loading && (
+            {loading && <div className="message bot">Typing...</div>}
+          </div>
 
-            <div className="message bot">
-              Typing...
-            </div>
+          <div className="input-area">
+            <input
+              type="text"
+              placeholder="Ask something..."
+              value={message}
+              onChange={(e) => setMessage(e.target.value)}
+              onKeyDown={(e) => {
+                if (e.key === "Enter") {
+                  sendMessage();
+                }
+              }}
+            />
 
-          )}
-
+            <button onClick={sendMessage}>Send</button>
+          </div>
         </div>
-
-        <div className="input-area">
-
-          <input
-            type="text"
-            placeholder="Ask something..."
-            value={message}
-            onChange={(e) => setMessage(e.target.value)}
-            onKeyDown={(e) => {
-
-              if (e.key === "Enter") {
-
-                sendMessage();
-
-              }
-
-            }}
-          />
-
-          <button onClick={sendMessage}>
-            Send
-          </button>
-
-        </div>
-
       </div>
-
     </div>
-
-      </div>
   );
 }
 
